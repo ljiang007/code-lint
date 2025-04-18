@@ -26,6 +26,8 @@ import Sidebar from "./components/Sidebar.vue";
 import Canvas from "./components/Canvas.vue";
 import PropertiesPanel from "./components/PropertiesPanel.vue";
 
+import { getDefaultComponentProps } from '@/utils/componentDefaults.js';
+
 export default {
   components: { Sidebar, Canvas, PropertiesPanel },
   data() {
@@ -64,46 +66,15 @@ export default {
 
     handleAddComponent(componentType) {
       const id = Date.now();
-      const newComponent = {
+      const base = {
         id,
         type: componentType,
         props: {},
         children: [],
       };
-
-      if (componentType === "layout") {
-        // 如果是布局组件，预设4个栅格栏（col）
-        newComponent.children = [
-          { id: id + 1, children: [] },
-          { id: id + 2, children: [] },
-          { id: id + 3, children: [] },
-          { id: id + 4, children: [] },
-        ];
-        newComponent.children = Array.from({ length: 4 }, (_, i) => ({
-          id: id + i + 1,
-          type: "col", // 添加一个类型标识（可选）
-          children: [],
-        }));
-      } else if (componentType === "text") {
-        // 如果是文本组件，设置默认文本
-        newComponent.props = {
-          text: "默认文本",
-          style: {
-            fontSize: "14px",
-            color: "#000000",
-          },
-        };
-      } else if (componentType === "image") {
-        newComponent.props = {
-          src: "https://static.form-create.com/example.png",
-          style: {
-            width: "100px",
-            maxWidth: "100px",
-          },
-        };
-      }
-
-      this.components.push(newComponent);
+      const defaultProps=Object.assign(base,getDefaultComponentProps(componentType))
+      console.log('defaultProps',defaultProps)
+      this.components.push(defaultProps);
       // 拖入后自动选中这个组件
       this.selectedId = id;
     },

@@ -5,7 +5,6 @@
       :key="child.id"
       :span="24 / component.children.length"
     >
-    
       <div
         class="col-box"
         @dragover.prevent
@@ -32,6 +31,7 @@
 </template>
 
 <script>
+import { getDefaultComponentProps } from '@/utils/componentDefaults.js';
 export default {
   name: "LayoutRenderer",
   props: {
@@ -45,45 +45,22 @@ export default {
     onDrop(event, targetCol) {
       event.stopPropagation();
       const type = event.dataTransfer.getData("componentType");
-      const newComponent = {
+      const base = {
         id: Date.now(),
         type,
         props: {},
         children: [],
       };
 
-      if (type === "text") {
-        newComponent.props = {
-          text: "默认文本",
-          style: {
-            fontSize: "14px",
-            color: "#000000",
-          },
-        };
-      } else if (type === "layout") {
-        newComponent.children = [
-          { id: Date.now() + 1, type: "col", children: [] },
-          { id: Date.now() + 2, type: "col", children: [] },
-          { id: Date.now() + 3, type: "col", children: [] },
-          { id: Date.now() + 4, type: "col", children: [] },
-        ];
-      } else if (type === "image") {
-        newComponent.props = {
-          src: "https://static.form-create.com/example.png",
-          style: {
-            width: "100px",
-            maxWidth: "100px",
-          },
-        };
-      }
+      const defaultProps=Object.assign(base,getDefaultComponentProps(type))
 
       if (targetCol && Array.isArray(targetCol.children)) {
-        this.$set(targetCol, "children", [...targetCol.children, newComponent]);
-        this.$emit("select", newComponent.id);
+        this.$set(targetCol, "children", [...targetCol.children, defaultProps]);
+        this.$emit("select", defaultProps.id);
         this.$forceUpdate();
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

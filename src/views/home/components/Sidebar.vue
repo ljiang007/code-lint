@@ -24,6 +24,7 @@ export default {
         { type: "text", label: "文本" },
         { type: "image", label: "图片" },
         // 后续可添加更多组件类型
+        { type: 'button', label: '按钮' } 
         // { type: "card", label: "卡片" },
       ],
     };
