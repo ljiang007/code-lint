@@ -5,10 +5,9 @@
     </el-col>
     <el-col :span="12" style="height: 100%">
       <Canvas
-        :components="components"
+        :components.sync="components"
         @select="handleSelect"
         :selectedId="selectedId"
-        @add-component="handleAddComponent"
         @delete-component="handleDeleteComponent"
       />
     </el-col>
@@ -26,8 +25,6 @@ import Sidebar from "./components/Sidebar.vue";
 import Canvas from "./components/Canvas.vue";
 import PropertiesPanel from "./components/PropertiesPanel.vue";
 
-import { getDefaultComponentProps } from '@/utils/componentDefaults.js';
-
 export default {
   components: { Sidebar, Canvas, PropertiesPanel },
   data() {
@@ -43,7 +40,7 @@ export default {
     },
   },
   methods: {
-    // ✅ 删除组件
+    // 删除组件
     handleDeleteComponent(id) {
       const removeById = (list) =>
         list
@@ -64,30 +61,17 @@ export default {
       if (this.selectedId === id) this.selectedId = null;
     },
 
-    handleAddComponent(componentType) {
-      const id = Date.now();
-      const base = {
-        id,
-        type: componentType,
-        props: {},
-        children: [],
-      };
-      const defaultProps=Object.assign(base,getDefaultComponentProps(componentType))
-      console.log('defaultProps',defaultProps)
-      this.components.push(defaultProps);
-      // 拖入后自动选中这个组件
-      this.selectedId = id;
-    },
-
     handleSelect(id) {
       this.selectedId = id;
     },
+    
     handleUpdateComponent(updatedProps) {
       const comp = this.findComponentById(this.selectedId, this.components);
       if (comp) {
         comp.props = updatedProps;
       }
     },
+    
     findComponentById(id, components) {
       for (let component of components) {
         if (component.id === id) {
