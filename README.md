@@ -1,19 +1,25 @@
 # code-lint
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 整体项目结构概述
+此项目属于低代码平台，主要用于构建页面，允许用户通过拖拽组件到画布，对组件属性进行配置，进而实现页面的快速搭建。项目文件被划分为 components 和 views 两个主要目录。
+## 各文件作用详解
+components 目录
+该目录存放着各类组件，这些组件可分为基础组件和通用组件。
+base 子目录：存放基础组件，这些组件是构建页面的基本单元。
+LayoutComponent.vue：作为布局组件，它能够对页面的整体结构进行管理，例如创建栅格布局。
+TextComponent.vue：为文本组件，可用于在页面上显示文本内容，同时能对文本样式进行配置。
+ImageComponent.vue：属于图片组件，用于在页面上展示图片，可对图片的来源和样式进行设置。
+ComponentPreview.vue：此组件用于预览页面布局，会递归渲染所有组件的预览效果。
+ComponentRenderer.vue：该组件用于渲染页面组件，可处理组件的选中、删除等操作。
+views 目录
+此目录存放视图组件，这些组件用于构建用户界面。
+home 子目录：存放主页相关的组件和样式文件。
+components 子目录：
+Canvas.vue：作为画布组件，提供了一个可拖拽组件的区域，用户可以将组件从侧边栏拖到该区域。同时，它还具备导出 JSON 和预览页面的功能。
+PropertiesPanel.vue：是属性面板组件，用于显示和编辑当前选中组件的属性。
+Sidebar.vue：为侧边栏组件，展示可拖拽的组件列表，用户可以从中选择组件并拖到画布上。
+style 子目录：存放样式文件。
+Canvas.scss：包含画布组件的样式。
+PropertiesPanel.scss：包含属性面板组件的样式。
+Siderbar.scss：包含侧边栏组件的样式。
+index.vue：作为主页组件，负责将侧边栏、画布和属性面板组件组合在一起，构建完整的页面。它还处理组件的添加、删除、选中和属性更新等操作。
