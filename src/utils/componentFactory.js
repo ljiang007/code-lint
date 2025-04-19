@@ -2,12 +2,34 @@
  * @description 组件工厂
  */
 
-import { getComponentInfo } from "@/components/base";
+// 组件映射配置
+export const componentMaps = {
+  // 编辑器组件映射
+  editors: {
+    text: () => import("@/components/base/text/TextEditor.vue"),
+    image: () => import("@/components/base/image/ImageEditor.vue"),
+    button: () => import("@/components/base/button/ButtonEditor.vue"),
+    layout: () => import("@/components/base/layout/LayoutEditor.vue"),
+  },
+  // 渲染器组件映射
+  renderers: {
+    text: () => import("@/components/base/text/TextRenderer.vue"),
+    image: () => import("@/components/base/image/ImageRenderer.vue"),
+    button: () => import("@/components/base/button/ButtonRenderer.vue"),
+    layout: () => import("@/components/base/layout/LayoutRenderer.vue"),
+  },
+  // 预览组件映射
+  previews: {
+    text: () => import("@/components/base/text/TextPreview.vue"),
+    image: () => import("@/components/base/image/ImagePreview.vue"),
+    button: () => import("@/components/base/button/ButtonPreview.vue"),
+    layout: () => import("@/components/base/layout/LayoutPreview.vue"),
+  }
+};
 
-// 生成唯一ID
-let idCounter = 0;
-function generateId() {
-  return Date.now() + (idCounter++);
+// 获取组件信息
+export function getComponentInfo(type) {
+  return componentMaps[type];
 }
 
 // 创建组件实例
@@ -45,26 +67,3 @@ export function createComponent(type, customProps = {}) {
   return component;
 }
 
-// 验证组件props
-export function validateComponentProps(type, props) {
-  const info = getComponentInfo(type);
-  if (!info) return false;
-
-  // 简单的类型检查
-  for (const [key, config] of Object.entries(info.propTypes || {})) {
-    const propValue = props[key];
-    const expectedType = config.type;
-    
-    if (config.required && propValue === undefined) {
-      console.error(`Missing required prop: ${key}`);
-      return false;
-    }
-
-    if (propValue !== undefined && typeof propValue !== expectedType) {
-      console.error(`Invalid type for prop ${key}: expected ${expectedType}, got ${typeof propValue}`);
-      return false;
-    }
-  }
-
-  return true;
-}

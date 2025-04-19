@@ -23,7 +23,6 @@ export default {
     editorComponent() {
       const type = this.selectedComponent?.type;
       if (!type) return null;
-
       //这里也要映射
       const map = {
         text: () => import("@/components/base/text/TextEditor.vue"),
