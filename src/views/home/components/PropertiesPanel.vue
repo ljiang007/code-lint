@@ -2,10 +2,11 @@
   <div>
     {{ selectedComponent }}
     <div v-if="selectedComponent" class="panel">
+      <!-- 因为我只需修改props（组件属性），所以这里传入各组件selectedComponent.props -->
       <component
         :is="editorComponent"
         v-if="editorComponent"
-        :propsData="selectedComponent"
+        :propsData="selectedComponent.props"
         @update="update"
       />
       <div v-else>暂无该组件的属性面板</div>
@@ -27,7 +28,7 @@ export default {
         text: () => import("@/components/base/text/TextEditor.vue"),
         image: () => import("@/components/base/image/ImageEditor.vue"),
         button: () => import("@/components/base/button/ButtonEditor.vue"),
-        layout: () => import("@/components/base/layout/LayoutEditor.vue"), // 如有
+        layout: () => import("@/components/base/layout/LayoutEditor.vue"), 
       };
 
       return map[type] ? () => map[type]() : null;

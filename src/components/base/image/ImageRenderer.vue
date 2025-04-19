@@ -1,6 +1,6 @@
 <template>
   <el-image
-    :src="component.props?.src"
+    :src="component.props?.Attributes?.src"
     :style="component.props?.style || {}"
     fit="contain"
   />

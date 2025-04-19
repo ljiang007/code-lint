@@ -41,6 +41,17 @@ export default {
   },
   methods: {
     // 删除组件
+    /**
+     * 删除组件的方法
+     * @param {string|number} id - 要删除的组件id
+     * 
+     * 该方法会递归遍历整个组件树:
+     * 1. 如果找到匹配id的组件,返回null以删除该组件
+     * 2. 如果组件有children,递归处理子组件
+     * 3. 对于layout类型组件,需要特殊处理其下的col组件
+     * 4. 最后用filter过滤掉所有null值
+     * 5. 如果删除的是当前选中的组件,清空选中状态
+     */
     handleDeleteComponent(id) {
       const removeById = (list) =>
         list
@@ -65,6 +76,7 @@ export default {
       this.selectedId = id;
     },
     
+    //属性面板修改数据用于响应画布
     handleUpdateComponent(updatedProps) {
       const comp = this.findComponentById(this.selectedId, this.components);
       if (comp) {
@@ -72,6 +84,17 @@ export default {
       }
     },
     
+    /**
+     * 递归查找组件树中指定id的组件
+     * @param {string|number} id - 要查找的组件id
+     * @param {Array} components - 组件树数组
+     * @returns {Object|null} 返回找到的组件对象,如果未找到则返回null
+     * 
+     * 该方法会递归遍历整个组件树:
+     * 1. 首先检查当前层级的组件id是否匹配
+     * 2. 如果当前组件有children,则递归搜索子组件
+     * 3. 直到找到目标组件或遍历完整个组件树
+     */
     findComponentById(id, components) {
       for (let component of components) {
         if (component.id === id) {

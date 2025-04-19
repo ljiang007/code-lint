@@ -8,7 +8,12 @@ export default {
   render(h) {
     return h(
       "el-row",
-      { class: "preview-box" },
+      { 
+        class: "preview-box",
+        props: {
+          gutter: this.component.props?.Attributes?.gutter || 0
+        }
+      },
       this.component.children.map((child) =>
         h(
           "el-col",

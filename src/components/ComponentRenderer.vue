@@ -1,7 +1,6 @@
 <template>
   <div
     :class="['component-box', component.id === selectedId ? 'solid' : 'dashed']"
-    :style="component.props?.style || {}"
     @click.stop="selectComponent(component.id)"
   >
     <component

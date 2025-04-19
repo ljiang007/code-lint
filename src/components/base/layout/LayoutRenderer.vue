@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row :gutter="component.props?.gutter||0">
+    <el-row :gutter="component.props?.Attributes?.gutter || 0">
       <el-col
         v-for="child in component.children"
         :key="child.id"

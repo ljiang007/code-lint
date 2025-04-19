@@ -1,8 +1,8 @@
 <template>
   <el-button
     :style="component.props?.style || {}"
-    :type="component.props?.text"
-    :plain="component.props?.plain"
+    :type="component.props?.Attributes?.type"
+    :plain="component.props?.Attributes?.plain"
     >{{ component.props?.text }}</el-button
   >
 </template>
