@@ -1,3 +1,4 @@
+<!-- 组件面板 -->
 <template>
   <div class="sidebar">
     <h4 class="_fc-l-title">通用组件</h4>

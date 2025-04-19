@@ -4,6 +4,7 @@
       <Sidebar />
     </el-col>
     <el-col :span="12" style="height: 100%">
+      <Operation :components.sync="components" @select="handleSelect" />
       <Canvas
         :components.sync="components"
         @select="handleSelect"
@@ -24,9 +25,9 @@
 import Sidebar from "./components/Sidebar.vue";
 import Canvas from "./components/Canvas.vue";
 import Attribute from "./components/Attribute.vue";
-
+import Operation from "./components/Operation.vue";
 export default {
-  components: { Sidebar, Canvas, Attribute },
+  components: { Sidebar, Canvas, Attribute, Operation },
   data() {
     return {
       components: [],

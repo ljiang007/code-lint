@@ -1,16 +1,6 @@
+<!-- 画布面板 -->
 <template>
   <div class="x">
-    <el-button type="primary" @click="exportJSON" style="margin-top: 20px">
-      导出 JSON
-    </el-button>
-    <el-button
-      type="primary"
-      @click="dialogVisible = true"
-      style="margin-top: 20px"
-    >
-      预览
-    </el-button>
-
     <div class="canvas">
       <!-- 使用正确的 Vue 2 vuedraggable 语法 -->
       <draggable
@@ -31,16 +21,6 @@
         </div>
       </draggable>
     </div>
-
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="80%">
-      <ComponentPreview :preview="localComponents" />
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
-      </span>
-    </el-dialog>
-    
   </div>
 </template>
 
@@ -54,7 +34,6 @@ export default {
   },
   data() {
     return { 
-      dialogVisible: false,
       localComponents: [] 
     };
   },
@@ -98,6 +77,7 @@ export default {
           type,
           props: {},
           children: [],
+          style: {},
         };
         
         // 添加默认属性
@@ -118,11 +98,6 @@ export default {
     },
     selectComponent(id) {
       this.$emit("select", id);
-    },
-    exportJSON() {
-      const json = JSON.stringify(this.localComponents, null, 2);
-      console.log("导出 JSON：", json);
-      console.log(this.localComponents);
     },
   },
 };

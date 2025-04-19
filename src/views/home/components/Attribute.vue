@@ -1,3 +1,4 @@
+<!-- 属性面板 -->
 <template>
   <div>
     {{ selectedComponent }}
