@@ -20,10 +20,7 @@
 </template>
 
 <script>
-import TextRenderer from "@/components/base/text/TextRenderer.vue";
-import ImageRenderer from "@/components/base/image/ImageRenderer.vue";
-import LayoutRenderer from "@/components/base/layout/LayoutRenderer.vue";
-import ButtonRenderer from "@/components/base/button/ButtonRenderer.vue";
+import { componentMaps } from "@/utils/componentFactory";
 
 export default {
   name: "ComponentRenderer",
@@ -36,14 +33,7 @@ export default {
       this.$emit("select", id);
     },
     resolveComponentType(type) {
-      //新增必须映射
-      const map = {
-        text: TextRenderer,
-        image: ImageRenderer,
-        layout: LayoutRenderer,
-        button: ButtonRenderer,
-      };
-      return map[type] || "div";
+      return componentMaps.renderers[type] || "div";
     },
   },
 };

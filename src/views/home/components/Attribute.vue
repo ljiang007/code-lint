@@ -17,21 +17,14 @@
 </template>
 
 <script>
+import { componentMaps } from "@/utils/componentFactory";
 export default {
   props: ["selectedComponent"],
   computed: {
     editorComponent() {
       const type = this.selectedComponent?.type;
       if (!type) return null;
-      //这里也要映射
-      const map = {
-        text: () => import("@/components/base/text/TextEditor.vue"),
-        image: () => import("@/components/base/image/ImageEditor.vue"),
-        button: () => import("@/components/base/button/ButtonEditor.vue"),
-        layout: () => import("@/components/base/layout/LayoutEditor.vue"), 
-      };
-
-      return map[type] ? () => map[type]() : null;
+      return componentMaps.editors[type] || null;
     },
   },
   methods: {

@@ -1,15 +1,20 @@
 /**
  * @description 组件工厂
+ * 组件映射配置
+ * 编辑器组件映射
+ * 渲染器组件映射
+ * 预览组件映射
  */
 
 // 组件映射配置
-export const componentMaps = {
+const componentMaps = {
   // 编辑器组件映射
   editors: {
     text: () => import("@/components/base/text/TextEditor.vue"),
     image: () => import("@/components/base/image/ImageEditor.vue"),
     button: () => import("@/components/base/button/ButtonEditor.vue"),
     layout: () => import("@/components/base/layout/LayoutEditor.vue"),
+    link: () => import("@/components/base/link/LinkEditor.vue"),
   },
   // 渲染器组件映射
   renderers: {
@@ -17,6 +22,7 @@ export const componentMaps = {
     image: () => import("@/components/base/image/ImageRenderer.vue"),
     button: () => import("@/components/base/button/ButtonRenderer.vue"),
     layout: () => import("@/components/base/layout/LayoutRenderer.vue"),
+    link: () => import("@/components/base/link/LinkRenderer.vue"),
   },
   // 预览组件映射
   previews: {
@@ -24,46 +30,16 @@ export const componentMaps = {
     image: () => import("@/components/base/image/ImagePreview.vue"),
     button: () => import("@/components/base/button/ButtonPreview.vue"),
     layout: () => import("@/components/base/layout/LayoutPreview.vue"),
-  }
+    link: () => import("@/components/base/link/LinkPreview.vue"),
+  },
+  list: [
+    { type: "text", label: "文本" },
+    { type: "image", label: "图片" },
+    { type: "button", label: "按钮" },
+    { type: "link", label: "链接" },
+    { type: "layout", label: "栅格布局" },
+  ],
 };
 
-// 获取组件信息
-export function getComponentInfo(type) {
-  return componentMaps[type];
-}
-
-// 创建组件实例
-export function createComponent(type, customProps = {}) {
-  const info = getComponentInfo(type);
-  if (!info) {
-    console.error(`Cannot create component: unknown type "${type}"`);
-    return null;
-  }
-
-  const id = generateId();
-  const component = {
-    id,
-    type,
-    props: {
-      ...JSON.parse(JSON.stringify(info.defaultProps || {})),
-      ...customProps
-    }
-  };
-
-  // 特殊处理布局组件
-  if (type === 'layout') {
-    component.children = Array.from(
-      { length: component.props.cols || 4 }, 
-      (_, i) => ({
-        id: generateId(),
-        type: 'col',
-        children: []
-      })
-    );
-  } else {
-    component.children = [];
-  }
-
-  return component;
-}
+export { componentMaps };
 

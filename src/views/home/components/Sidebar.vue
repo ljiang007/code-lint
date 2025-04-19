@@ -5,7 +5,7 @@
     <div class="component-list">
       <!-- 使用正确的 Vue 2 版本 vuedraggable 语法 -->
       <draggable
-        :list="componentList"
+        :list="list"
         :clone="cloneComponent"
         :group="{ name: 'components', pull: 'clone', put: false }"
         :sort="false"
@@ -13,7 +13,7 @@
       >
         <!-- 在 Vue 2 中，我们使用默认插槽而不是 item 插槽 -->
         <div
-          v-for="item in componentList"
+          v-for="item in list"
           :key="item.type"
           class="draggable-item"
         >
@@ -25,32 +25,28 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable';
+import draggable from "vuedraggable";
+import { componentMaps } from "@/utils/componentFactory";
 
 export default {
   components: {
-    draggable
+    draggable,
   },
   data() {
     return {
-      componentList: [
-        { type: "layout", label: "栅格布局" },
-        { type: "text", label: "文本" },
-        { type: "image", label: "图片" },
-        { type: "button", label: "按钮" }
-      ],
+      list: componentMaps.list,
     };
   },
   methods: {
     // 克隆组件，用于从侧边栏拖出时创建副本
     cloneComponent(component) {
-      console.log('克隆组件:', component);
+      console.log("克隆组件:", component);
       return {
         ...component,
         id: Date.now(), // 生成唯一ID
-        _isClone: true  // 添加标识，表示这是从侧边栏克隆出来的
+        _isClone: true, // 添加标识，表示这是从侧边栏克隆出来的
       };
-    }
+    },
   },
 };
 </script>

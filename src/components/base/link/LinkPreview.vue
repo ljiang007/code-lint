@@ -1,18 +1,16 @@
 <script>
 export default {
-  name: "ButtonPreview",
+  name: "LinkPreview",
   props: {
     component: Object,
   },
   render(h) {
-    //调试
-    console.log(this.component);
     return h(
-      "el-button",
+      "el-link",
       {
         props: {
           type: this.component.props?.Attributes?.type,
-          plain: this.component.props?.Attributes?.plain,
+          underline: this.component.props?.Attributes?.underline,
         },
         style: this.component.props?.style || {},
       },

@@ -87,6 +87,21 @@ export function getDefaultComponentProps(type) {
         },
         children: [],
       };
+    case "link":
+      return {
+        props: {
+          text: "默认链接",
+          Attributes: {
+            type: "",
+            underline: false,
+          },
+          style: {
+            fontSize: "14px",
+            color: "#000000",
+          },
+        },
+        children: [],
+      };
     default:
       return {};
   }

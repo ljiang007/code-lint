@@ -1,19 +1,11 @@
 <script>
-import TextPreview from "@/components/base/text/TextPreview.vue";
-import ImagePreview from "@/components/base/image/ImagePreview.vue";
-import LayoutPreview from "@/components/base/layout/LayoutPreview.vue";
-import ButtonPreview from '@/components/base/button/ButtonPreview.vue' 
+
+import { componentMaps } from "@/utils/componentFactory";
 
 export default {
   name: "Preview",
   props: {
     preview: Array,
-  },
-  components: {
-    TextPreview,
-    LayoutPreview,
-    ImagePreview,
-    ButtonPreview
   },
   provide() {
     return {
@@ -22,18 +14,11 @@ export default {
     };
   },
   methods: {
-    // 新增递归渲染方法====新增的必须映射
     renderPreview(h, component) {
       const { type } = component;
-      const componentMap = {
-        text: TextPreview,
-        layout: LayoutPreview,
-        image: ImagePreview,
-        button:ButtonPreview
-      };
-      
-      if (componentMap[type]) {
-        return h(componentMap[type], {
+      const preview = componentMaps.previews[type]
+      if (preview) {
+        return h(preview, {
           props: {
             component
           }
