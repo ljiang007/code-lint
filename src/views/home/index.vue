@@ -12,7 +12,7 @@
       />
     </el-col>
     <el-col :span="6" style="height: 100%">
-      <PropertiesPanel
+      <Attribute
         :selectedComponent="selectedComponent"
         @update="handleUpdateComponent"
       />
@@ -23,10 +23,10 @@
 <script>
 import Sidebar from "./components/Sidebar.vue";
 import Canvas from "./components/Canvas.vue";
-import PropertiesPanel from "./components/PropertiesPanel.vue";
+import Attribute from "./components/Attribute.vue";
 
 export default {
-  components: { Sidebar, Canvas, PropertiesPanel },
+  components: { Sidebar, Canvas, Attribute },
   data() {
     return {
       components: [],

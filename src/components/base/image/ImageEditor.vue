@@ -3,6 +3,12 @@
     <el-form-item label="图片链接">
       <el-input v-model="localProps.Attributes.src" @input="update" />
     </el-form-item>
+    <el-form-item label="图片宽度">
+      <el-input v-model="localProps.style.width" @input="update" />
+    </el-form-item>
+    <el-form-item label="图片高度">
+      <el-input v-model="localProps.style.height" @input="update" />
+    </el-form-item>
   </el-form>
 </template>
 

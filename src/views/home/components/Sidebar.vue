@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <h4 class="_fc-l-title">模板</h4>
+    <h4 class="_fc-l-title">通用组件</h4>
     <div class="component-list">
       <!-- 使用正确的 Vue 2 版本 vuedraggable 语法 -->
       <draggable

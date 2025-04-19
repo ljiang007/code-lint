@@ -45,7 +45,7 @@
 - **`Canvas.vue`**  
   画布区域，支持组件拖拽放置。实现组件管理（添加、删除）、页面预览、导出 JSON 数据等功能。
 
-- **`PropertiesPanel.vue`**  
+- **`Attribute.vue`**  
   属性面板，用于展示与编辑当前选中组件的属性，如样式、内容等。
 
 - **`Sidebar.vue`**  
@@ -56,12 +56,12 @@
 包含各模块的样式文件（SCSS）：
 
 - `Canvas.scss`：画布区域样式
-- `PropertiesPanel.scss`：属性面板样式
+- `Attribute.scss`：属性面板样式
 - `Sidebar.scss`：侧边栏样式
 
 #### 📄 index.vue
 
-主页主组件，整合 Sidebar（侧边栏）、Canvas（画布）、PropertiesPanel（属性面板），完成以下功能：
+主页主组件，整合 Sidebar（侧边栏）、Canvas（画布）、Attribute（属性面板），完成以下功能：
 
 - 页面组件组合渲染
 - 支持组件的选中、高亮、删除

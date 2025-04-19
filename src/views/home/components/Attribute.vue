@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/PropertiesPanel.scss";
+@import "../style/Attribute.scss";
 </style>
