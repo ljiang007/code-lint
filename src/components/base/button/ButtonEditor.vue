@@ -31,7 +31,6 @@ export default {
   props: ["propsData"],
   data() {
     return {
-      localProps: this.propsData,
       options: [
         { value: "primary", label: "主要" },
         { value: "success", label: "成功" },
@@ -39,6 +38,16 @@ export default {
         { value: "danger", label: "危险" },
       ],
     };
+  },
+  computed: {
+    localProps: {
+      get() {
+        return this.propsData;
+      },
+      set(value) {
+        this.$emit("update", value);
+      }
+    }
   },
   methods: {
     update() {

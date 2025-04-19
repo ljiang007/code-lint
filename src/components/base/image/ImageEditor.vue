@@ -15,10 +15,15 @@
 <script>
 export default {
   props: ["propsData"],
-  data() {
-    return {
-      localProps: this.propsData,
-    };
+  computed: {
+    localProps: {
+      get() {
+        return this.propsData;
+      },
+      set(value) {
+        this.$emit("update", value);
+      },
+    },
   },
   methods: {
     update() {

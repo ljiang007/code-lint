@@ -72,7 +72,7 @@ export default {
       this.components = removeById(this.components);
       if (this.selectedId === id) this.selectedId = null;
     },
-
+    // 默认选中组件
     handleSelect(id) {
       this.selectedId = id;
     },
