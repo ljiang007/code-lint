@@ -11,7 +11,10 @@ export default {
       {
         class: "preview-box",
         props: {
-          gutter: this.component.props?.Attributes?.gutter || 0,
+          gutter: this.component.props?.Attributes?.gutter,
+          type: this.component.props?.Attributes?.type,
+          justify: this.component.props?.Attributes?.justify,
+          align: this.component.props?.Attributes?.align,
         },
       },
       this.component.children.map((child) =>

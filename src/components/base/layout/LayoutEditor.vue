@@ -20,21 +20,23 @@
       >
       </el-switch>
     </el-form-item>
-    <el-form-item label="水平对齐方式" v-if="localProps.Attributes.type === 'flex'">
-      <el-select
-        v-model="localProps.Attributes.justify"
-        placeholder="请选择水平对齐方式"
-      >
-        <el-option label="左对齐" value="left"></el-option>
+    <el-form-item
+      label="	flex布局下的水平排列方式"
+      v-if="localProps.Attributes.type === 'flex'"
+    >
+      <el-select v-model="localProps.Attributes.justify" placeholder="请选择">
+        <el-option label="左对齐" value="start"></el-option>
+        <el-option label="右对齐" value="end"></el-option>
         <el-option label="居中对齐" value="center"></el-option>
-        <el-option label="右对齐" value="right"></el-option>
+        <el-option label="两端对齐" value="space-between"></el-option>
+        <el-option label="分散对齐" value="space-around"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="垂直对齐方式" v-if="localProps.Attributes.type === 'flex'">
-      <el-select
-        v-model="localProps.Attributes.align"
-        placeholder="请选择垂直对齐方式"
-      >
+    <el-form-item
+      label="flex布局下的垂直排列方式"
+      v-if="localProps.Attributes.type === 'flex'"
+    >
+      <el-select v-model="localProps.Attributes.align" placeholder="请选择">
         <el-option label="上对齐" value="top"></el-option>
         <el-option label="居中对齐" value="middle"></el-option>
         <el-option label="下对齐" value="bottom"></el-option>

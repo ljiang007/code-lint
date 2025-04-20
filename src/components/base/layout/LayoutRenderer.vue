@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-row :gutter="component.props?.Attributes?.gutter || 0">
+    <el-row
+      :gutter="component.props?.Attributes?.gutter"
+      :type="component.props?.Attributes?.type"
+      :justify="component.props?.Attributes?.justify"
+      :align="component.props?.Attributes?.align"
+    >
       <el-col
         v-for="child in component.children"
         :key="child.id"

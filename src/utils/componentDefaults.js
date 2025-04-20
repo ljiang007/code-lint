@@ -52,7 +52,7 @@ export function getDefaultComponentProps(type) {
             span: 6,
             gutter: 8,
             type: "",
-            justify: "",
+            justify: "start",
             align: "",
           },
         },
