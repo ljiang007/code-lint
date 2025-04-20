@@ -1,11 +1,6 @@
 <!-- 画布面板 -->
 <template>
   <div class="x">
-    <el-row type="flex" align="middle">
-      <el-col :span="6"><div><div><div><div><span>1</span></div></div></div></div></el-col>
-      <el-col :span="6"><div><div><div><div><span>2</span></div></div></div></div></el-col>
-      <el-col :span="6"><div><div><div><div><span>3</span></div></div></div></div></el-col>
-    </el-row>
     <div class="canvas">
       <!-- 使用正确的 Vue 2 vuedraggable 语法 -->
       <draggable
