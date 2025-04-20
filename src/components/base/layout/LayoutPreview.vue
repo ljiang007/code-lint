@@ -22,7 +22,15 @@ export default {
           "el-col",
           {
             key: child.id,
-            props: { span: child.props?.Attributes?.span },
+            props: {
+              span: child.props?.Attributes?.span,
+              offset: child.props?.Attributes?.offset,
+              push: child.props?.Attributes?.push,
+            },
+            style: this.getPullStyle(
+              child.props?.Attributes?.pull,
+              child.props?.style
+            ),
             // 自适应就用这个
             // props: { span: 24 / this.component.children.length },
             // style: { flex: `0 0 ${100 / this.component.children.length}%` },
@@ -39,6 +47,20 @@ export default {
         )
       )
     );
+  },
+  methods: {
+    getPullStyle(pull, style) {
+      if (pull) {
+        return {
+          left: `-${pull * 4.166667}%`,
+        };
+      } else {
+        return {
+          margin: style.margin,
+          padding: style.padding,
+        };
+      }
+    },
   },
 };
 </script>

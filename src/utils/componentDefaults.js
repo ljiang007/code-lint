@@ -40,6 +40,8 @@ export function getDefaultComponentProps(type) {
           style: {
             fontSize: "14px",
             color: "#000000",
+            margin: "0px",
+            padding: "0px",
           },
           Attributes: {},
         },
@@ -49,36 +51,51 @@ export function getDefaultComponentProps(type) {
       return {
         props: {
           Attributes: {
-            span: 6,
-            gutter: 8,
+            gutter: 0,
             type: "",
             justify: "start",
             align: "",
+          },
+          style: {
+            margin: "0px",
+            padding: "0px",
           },
         },
         children: [
           {
             id: timestamp + 1,
-            type: "col",
-            props: { Attributes: { span: 6 } },
+            type: "layout",
+            props: {
+              Attributes: { span: 6, offset: 0, push: 0, pull: 0 },
+              style: { margin: "0px", padding: "0px" },
+            },
             children: [],
           },
           {
             id: timestamp + 2,
-            type: "col",
-            props: { Attributes: { span: 6 } },
+            type: "layout",
+            props: {
+              Attributes: { span: 6, offset: 0, push: 0, pull: 0 },
+              style: { margin: "0px", padding: "0px" },
+            },
             children: [],
           },
           {
             id: timestamp + 3,
-            type: "col",
-            props: { Attributes: { span: 6 } },
+            type: "layout",
+            props: {
+              Attributes: { span: 6, offset: 0, push: 0, pull: 0 },
+              style: { margin: "0px", padding: "0px" },
+            },
             children: [],
           },
           {
             id: timestamp + 4,
-            type: "col",
-            props: { Attributes: { span: 6 } },
+            type: "layout",
+            props: {
+              Attributes: { span: 6, offset: 0, push: 0, pull: 0 },
+              style: { margin: "0px", padding: "0px" },
+            },
             children: [],
           },
         ],
@@ -92,6 +109,8 @@ export function getDefaultComponentProps(type) {
           style: {
             width: "100px",
             height: "100px",
+            margin: "0px",
+            padding: "0px",
           },
         },
         children: [],
@@ -107,6 +126,8 @@ export function getDefaultComponentProps(type) {
           style: {
             fontSize: "14px",
             color: "#000000",
+            margin: "0px",
+            padding: "12px 20px 12px 20px",
           },
         },
         children: [],
@@ -122,6 +143,8 @@ export function getDefaultComponentProps(type) {
           style: {
             fontSize: "14px",
             color: "#000000",
+            margin: "0px",
+            padding: "0px",
           },
         },
         children: [],

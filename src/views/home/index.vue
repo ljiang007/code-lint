@@ -86,6 +86,7 @@ export default {
       if (comp) {
         comp.props = updatedProps;
       }
+      console.log('333',comp);
     },
 
     /**

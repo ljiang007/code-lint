@@ -5,11 +5,15 @@
       :type="component.props?.Attributes?.type"
       :justify="component.props?.Attributes?.justify"
       :align="component.props?.Attributes?.align"
+      :style="component.props?.style"
     >
       <el-col
         v-for="child in component.children"
         :key="child.id"
         :span="child.props?.Attributes?.span"
+        :offset="child.props?.Attributes?.offset"
+        :push="child.props?.Attributes?.push"
+        :style="getPullStyle(child.props?.Attributes?.pull, child.props?.style)"
       >
         <div
           class="col-box"
@@ -63,6 +67,18 @@ export default {
     selectedId: [String, Number],
   },
   methods: {
+    getPullStyle(pull, style) {
+      if (pull) {
+        return {
+          left: `-${pull * 4.166667}%`,
+        };
+      }else{
+        return {
+          margin: style.margin,
+          padding: style.padding,
+        };
+      }
+    },
     selectComponent(id) {
       this.$emit("select", id);
     },

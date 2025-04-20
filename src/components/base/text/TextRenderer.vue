@@ -1,5 +1,5 @@
 <template>
-  <span :style="component.props?.style">{{ component.props?.text }}</span>
+  <div :style="component.props?.style">{{ component.props?.text }}</div>
 </template>
 
 <script>
