@@ -4,7 +4,7 @@
       <el-col
         v-for="child in component.children"
         :key="child.id"
-        :span="24 / component.children.length"
+        :span="child.props?.Attributes?.span"
       >
         <div
           class="col-box"

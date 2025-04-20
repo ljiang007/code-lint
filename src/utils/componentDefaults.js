@@ -49,14 +49,38 @@ export function getDefaultComponentProps(type) {
       return {
         props: {
           Attributes: {
+            span: 6,
             gutter: 8,
+            type: "",
+            justify: "",
+            align: "",
           },
         },
         children: [
-          { id: timestamp + 1, type: "col", children: [] },
-          { id: timestamp + 2, type: "col", children: [] },
-          { id: timestamp + 3, type: "col", children: [] },
-          { id: timestamp + 4, type: "col", children: [] },
+          {
+            id: timestamp + 1,
+            type: "col",
+            props: { Attributes: { span: 6 } },
+            children: [],
+          },
+          {
+            id: timestamp + 2,
+            type: "col",
+            props: { Attributes: { span: 6 } },
+            children: [],
+          },
+          {
+            id: timestamp + 3,
+            type: "col",
+            props: { Attributes: { span: 6 } },
+            children: [],
+          },
+          {
+            id: timestamp + 4,
+            type: "col",
+            props: { Attributes: { span: 6 } },
+            children: [],
+          },
         ],
       };
     case "image":

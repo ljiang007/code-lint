@@ -1,6 +1,11 @@
 <!-- 画布面板 -->
 <template>
   <div class="x">
+    <el-row >
+      <el-col :span="6">1</el-col>
+      <el-col :span="6">2</el-col>
+      <el-col :span="6">3</el-col>
+    </el-row>
     <div class="canvas">
       <!-- 使用正确的 Vue 2 vuedraggable 语法 -->
       <draggable
@@ -25,16 +30,16 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable';
-import { getDefaultComponentProps } from '@/utils/componentDefaults.js';
+import draggable from "vuedraggable";
+import { getDefaultComponentProps } from "@/utils/componentDefaults.js";
 
 export default {
   components: {
-    draggable
+    draggable,
   },
   data() {
-    return { 
-      localComponents: [] 
+    return {
+      localComponents: [],
     };
   },
   props: ["components", "selectedId"],
@@ -46,14 +51,14 @@ export default {
           this.localComponents = JSON.parse(JSON.stringify(val));
         }
       },
-      immediate: true
+      immediate: true,
     },
     localComponents: {
       handler(val) {
-        this.$emit('update:components', val);
+        this.$emit("update:components", val);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
     deleteComponent(id) {
@@ -63,14 +68,14 @@ export default {
       // 处理新添加的组件
       const newIndex = evt.newIndex;
       const component = this.localComponents[newIndex];
-      
-      console.log('添加新组件:', component);
-      
+
+      console.log("添加新组件:", component);
+
       // 如果是从侧边栏克隆过来的，需要处理
       if (component._isClone) {
         const id = component.id || Date.now();
         const type = component.type;
-        
+
         // 创建组件基本结构
         const base = {
           id,
@@ -79,13 +84,17 @@ export default {
           children: [],
           style: {},
         };
-        
+
         // 添加默认属性
-        const newComponent = Object.assign({}, base, getDefaultComponentProps(type));
-        
+        const newComponent = Object.assign(
+          {},
+          base,
+          getDefaultComponentProps(type)
+        );
+
         // 替换克隆的组件
         this.$set(this.localComponents, newIndex, newComponent);
-        
+
         // 选中新组件
         this.$nextTick(() => {
           this.selectComponent(id);
@@ -94,7 +103,7 @@ export default {
     },
     handleDragEnd() {
       // 发出更新事件，通知父组件
-      this.$emit('update:components', this.localComponents);
+      this.$emit("update:components", this.localComponents);
     },
     selectComponent(id) {
       this.$emit("select", id);

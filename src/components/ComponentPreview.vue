@@ -1,3 +1,4 @@
+<!-- 可写render函数写法，也可可写template写法 -->
 <script>
 
 import { componentMaps } from "@/utils/componentFactory";

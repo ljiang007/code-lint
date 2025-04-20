@@ -8,19 +8,21 @@ export default {
   render(h) {
     return h(
       "el-row",
-      { 
+      {
         class: "preview-box",
         props: {
-          gutter: this.component.props?.Attributes?.gutter || 0
-        }
+          gutter: this.component.props?.Attributes?.gutter || 0,
+        },
       },
       this.component.children.map((child) =>
         h(
           "el-col",
           {
             key: child.id,
-            props: { span: 24 / this.component.children.length },
-            style: { flex: `0 0 ${100 / this.component.children.length}%` },
+            props: { span: child.props?.Attributes?.span },
+            // 自适应就用这个
+            // props: { span: 24 / this.component.children.length },
+            // style: { flex: `0 0 ${100 / this.component.children.length}%` },
           },
           [
             h(
