@@ -2,7 +2,7 @@
   <div class="box-model-demo">
     <div
       class="margin-container"
-      v-if="localProps?.Attributes?.style && Object.keys(localProps.Attributes.style).length !== 0"
+      v-if="type !== 'layout'"
     >
       <div class="margin-label">外边距</div>
       <div class="margin-numbers">
@@ -62,7 +62,7 @@
         <div class="content"></div>
       </div>
     </div>
-    <div v-else>不提供布局组件的内外边距修改</div>
+    <div v-else>栅格布局不提供内外边距修改</div>
   </div>
 </template>
 
@@ -72,6 +72,10 @@ export default {
     propsData: {
       type: Object,
       default: () => {},
+    },
+    type: {
+      type: String,
+      default: "",
     },
   },
   computed: {

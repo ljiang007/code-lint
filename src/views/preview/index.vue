@@ -1,5 +1,5 @@
 <template>
-  <div class="preview">
+  <div class="preview" :style="{ backgroundColor: backgroundColor }">
     <ComponentPreview :preview="components" />
   </div>
 </template>
@@ -9,16 +9,20 @@ export default {
   name: "Preview",
   data() {
     return {
-        components: []
-    }
+      components: [],
+      backgroundColor: "#ffffff",
+    };
   },
   created() {
     // 获取初始数据
     const savedComponents = localStorage.getItem('components');
+    const savedBackgroundColor = localStorage.getItem('backgroundColor');
     if (savedComponents) {
         this.components = JSON.parse(savedComponents);
     }
-    
+    if (savedBackgroundColor) {
+        this.backgroundColor = savedBackgroundColor;
+    }
     // 监听 localStorage 变化
     window.addEventListener('storage', this.handleStorageChange);
   },
@@ -32,6 +36,9 @@ export default {
         const newComponents = JSON.parse(e.newValue);
         this.components = newComponents;
       }
+      if (e.key === 'backgroundColor') {
+        this.backgroundColor = e.newValue;
+      }
     }
   }
 };
@@ -40,5 +47,6 @@ export default {
 <style scoped>
 .preview {
   padding: 10px;
+  text-align: center;
 }
 </style>

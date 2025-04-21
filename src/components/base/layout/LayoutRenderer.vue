@@ -1,20 +1,21 @@
 <template>
   <div>
     <el-row
-      :gutter="component.props?.Attributes?.gutter"
-      :type="component.props?.Attributes?.type"
-      :justify="component.props?.Attributes?.justify"
-      :align="component.props?.Attributes?.align"
+      :gutter="component.props?.attr?.gutter"
+      :type="component.props?.attr?.type"
+      :justify="component.props?.attr?.justify"
+      :align="component.props?.attr?.align"
       :style="component.props?.style"
     >
     <!-- no：pull -->
       <el-col
         v-for="child in component.children"
         :key="child.id"
-        :span="child.props?.Attributes?.span"
-        :offset="child.props?.Attributes?.offset"
-        :push="child.props?.Attributes?.push"
-        :pull="child.props?.Attributes?.pull"
+        :span="child.props?.attr?.span"
+        :offset="child.props?.attr?.offset"
+        :push="child.props?.attr?.push"
+        :pull="child.props?.attr?.pull"
+        :style="child.props?.style"
       >
         <div
           class="col-box"

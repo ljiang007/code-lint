@@ -5,7 +5,7 @@
  * - props: 组件可配置的属性
  *   - 包含组件的基本属性和样式属性
  *   - style: 统一管理组件样式,如字体、颜色等
- *   - Attributes: 组件的属性
+ *   - attr: 组件的属性
  *
  * - children: 子组件列表
  *   - layout组件: 包含多个col栅格子组件
@@ -16,7 +16,7 @@
  * - type: 组件类型标识
  *
  * 备注：
- *  -Attributes(组件的属性)和style(组件的样式)，最好在属性面板都加上设置
+ *  -attr(组件的属性)和style(组件的样式)，最好在属性面板都加上设置
  *
  * 组件默认配置格式：
  * {
@@ -25,7 +25,7 @@
  *  props: {
  *    text: "", //组件文本内容
  *    style: {},//组件样式(JSON字符串)
- *    Attributes: {},//组件属性(JSON字符串)
+ *    attr: {},//组件属性(JSON字符串)
  *  },
  *  children: [],//子组件列表
  * }
@@ -44,14 +44,14 @@ export function getDefaultComponentProps(type) {
             padding: "0px",
             textAlign: "left",
           },
-          Attributes: {},
+          attr: {},
         },
         children: [],
       };
     case "layout":
       return {
         props: {
-          Attributes: {
+          attr: {
             gutter: 0,
             type: "",
             justify: "start",
@@ -64,8 +64,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 1,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -73,8 +73,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 2,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -82,8 +82,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 3,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -91,8 +91,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 4,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -100,8 +100,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 5,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -109,8 +109,8 @@ export function getDefaultComponentProps(type) {
             id: timestamp + 6,
             type: "layout",
             props: {
-              Attributes: { span: 4, offset: 0, push: 0, pull: 0 },
-              style: {},
+              attr: { span: 4, offset: 0, push: 0, pull: 0 },
+              style: { backgroundColor: "rgba(255,255,255,1)" },
             },
             children: [],
           },
@@ -119,12 +119,12 @@ export function getDefaultComponentProps(type) {
     case "image":
       return {
         props: {
-          Attributes: {
+          attr: {
             src: "https://static.form-create.com/example.png",
           },
           style: {
-            width: "100px",
-            height: "100px",
+            width: "100%",
+            height: "",
             margin: "0px",
             padding: "0px",
           },
@@ -135,7 +135,7 @@ export function getDefaultComponentProps(type) {
       return {
         props: {
           text: "按钮",
-          Attributes: {
+          attr: {
             plain: false,
             type: "",
           },
@@ -153,7 +153,7 @@ export function getDefaultComponentProps(type) {
       return {
         props: {
           text: "默认链接",
-          Attributes: {
+          attr: {
             type: "",
             underline: false,
           },
@@ -171,8 +171,15 @@ export function getDefaultComponentProps(type) {
       return {
         props: {
           text: "",
-          Attributes: {},
-          style: {},
+          attr: {},
+          style: {
+            width: "300px",
+            height: "300px",
+            borderRadius: "10px",
+            boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+            backgroundColor: "rgba(255,255,255,1);",
+            boxSizing: "border-box",
+          },
         },
         children: [],
       };

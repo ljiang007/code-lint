@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- row的属性 -->
-    <el-form label-position="top" v-if="'gutter' in localProps.Attributes">
+    <el-form label-position="top" v-if="'gutter' in localProps.attr">
       <el-form-item label="栅格间隔">
         <el-input-number
-          v-model="localProps.Attributes.gutter"
+          v-model="localProps.attr.gutter"
           :min="0"
           :max="100"
           @change="update"
@@ -12,10 +12,10 @@
       </el-form-item>
       <el-form-item label="是否flex布局模式">
         <el-switch
-          :value="localProps.Attributes.type === 'flex'"
+          :value="localProps.attr.type === 'flex'"
           @change="
             (val) => {
-              localProps.Attributes.type = val ? 'flex' : '';
+              localProps.attr.type = val ? 'flex' : '';
               update();
             }
           "
@@ -24,9 +24,9 @@
       </el-form-item>
       <el-form-item
         label="	flex布局下的水平排列方式"
-        v-if="localProps.Attributes.type === 'flex'"
+        v-if="localProps.attr.type === 'flex'"
       >
-        <el-select v-model="localProps.Attributes.justify" placeholder="请选择">
+        <el-select v-model="localProps.attr.justify" placeholder="请选择">
           <el-option label="左对齐" value="start"></el-option>
           <el-option label="右对齐" value="end"></el-option>
           <el-option label="居中对齐" value="center"></el-option>
@@ -36,9 +36,9 @@
       </el-form-item>
       <el-form-item
         label="flex布局下的垂直排列方式"
-        v-if="localProps.Attributes.type === 'flex'"
+        v-if="localProps.attr.type === 'flex'"
       >
-        <el-select v-model="localProps.Attributes.align" placeholder="请选择">
+        <el-select v-model="localProps.attr.align" placeholder="请选择">
           <el-option label="上对齐" value="top"></el-option>
           <el-option label="居中对齐" value="middle"></el-option>
           <el-option label="下对齐" value="bottom"></el-option>
@@ -49,7 +49,7 @@
     <el-form label-position="top" v-else>
       <el-form-item label="栅格占据的列数">
         <el-input-number
-          v-model="localProps.Attributes.span"
+          v-model="localProps.attr.span"
           :min="0"
           :max="24"
           @change="update"
@@ -57,7 +57,7 @@
       </el-form-item>
       <el-form-item label="栅格左侧的间隔格数">
         <el-input-number
-          v-model="localProps.Attributes.offset"
+          v-model="localProps.attr.offset"
           :min="0"
           :max="24"
           @change="update"
@@ -65,7 +65,7 @@
       </el-form-item>
       <el-form-item label="栅格向右移动格数">
         <el-input-number
-          v-model="localProps.Attributes.push"
+          v-model="localProps.attr.push"
           :min="0"
           :max="24"
           @change="update"
@@ -73,11 +73,14 @@
       </el-form-item>
       <el-form-item label="栅格向左移动格数">
         <el-input-number
-          v-model="localProps.Attributes.pull"
+          v-model="localProps.attr.pull"
           :min="0"
           :max="24"
           @change="update"
         />
+      </el-form-item>
+      <el-form-item label="背景颜色">
+        <el-color-picker v-model="localProps.style.backgroundColor" @change="update" />
       </el-form-item>
     </el-form>
   </div>

@@ -7,7 +7,7 @@ export default {
   render(h) {
     return h("el-image", {
       props: {
-        src: this.component.props?.Attributes?.src,
+        src: this.component.props?.attr?.src,
       },
       style: this.component.props?.style || {},
     });

@@ -11,8 +11,8 @@ export default {
       "el-button",
       {
         props: {
-          type: this.component.props?.Attributes?.type,
-          plain: this.component.props?.Attributes?.plain,
+          type: this.component.props?.attr?.type,
+          plain: this.component.props?.attr?.plain,
         },
         style: this.component.props?.style || {},
       },

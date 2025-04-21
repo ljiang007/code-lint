@@ -8,11 +8,13 @@
         :components.sync="components"
         @select="handleSelect"
         @importJson="importJson"
+        @update:backgroundColor="updateBackgroundColor"
       />
       <Canvas
         :components.sync="components"
         @select="handleSelect"
         :selectedId="selectedId"
+        :backgroundColor="backgroundColor"
         @delete-component="handleDeleteComponent"
       />
     </el-col>
@@ -36,6 +38,7 @@ export default {
     return {
       components: [],
       selectedId: null,
+      backgroundColor: "#ffffff",
     };
   },
   computed: {
@@ -45,6 +48,9 @@ export default {
     },
   },
   methods: {
+    updateBackgroundColor(color) {
+      this.backgroundColor = color;
+    },
     importJson(code) {
       this.components = code;
       this.handleSelect(code[code.length - 1]?.id || null);

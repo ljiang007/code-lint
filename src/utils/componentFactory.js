@@ -15,6 +15,7 @@ const componentMaps = {
     button: () => import("@/components/base/button/ButtonEditor.vue"),
     layout: () => import("@/components/base/layout/LayoutEditor.vue"),
     link: () => import("@/components/base/link/LinkEditor.vue"),
+    card: () => import("@/components/base/card/CardEditor.vue"),
   },
   // 渲染器组件映射
   renderers: {
@@ -23,6 +24,7 @@ const componentMaps = {
     button: () => import("@/components/base/button/ButtonRenderer.vue"),
     layout: () => import("@/components/base/layout/LayoutRenderer.vue"),
     link: () => import("@/components/base/link/LinkRenderer.vue"),
+    card: () => import("@/components/base/card/CardRenderer.vue"),
   },
   // 预览组件映射
   previews: {
@@ -31,6 +33,7 @@ const componentMaps = {
     button: () => import("@/components/base/button/ButtonPreview.vue"),
     layout: () => import("@/components/base/layout/LayoutPreview.vue"),
     link: () => import("@/components/base/link/LinkPreview.vue"),
+    card: () => import("@/components/base/card/CardPreview.vue"),
   },
   basics: [
     { type: "text", label: "文本" },

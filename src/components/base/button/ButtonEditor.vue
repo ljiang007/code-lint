@@ -1,7 +1,7 @@
 <template>
   <el-form label-position="top">
     <el-form-item label="类型">
-      <el-select v-model="localProps.Attributes.type" placeholder="请选择" @change="update">
+      <el-select v-model="localProps.attr.type" placeholder="请选择" @change="update">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -12,7 +12,7 @@
       </el-select>
     </el-form-item>
     <el-form-item label="是否朴素按钮">
-      <el-switch v-model="localProps.Attributes.plain" @change="update" />
+      <el-switch v-model="localProps.attr.plain" @change="update" />
     </el-form-item>
     <el-form-item label="字体颜色">
       <el-color-picker v-model="localProps.style.color" @change="update" />

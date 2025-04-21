@@ -9,8 +9,8 @@ export default {
       "el-link",
       {
         props: {
-          type: this.component.props?.Attributes?.type,
-          underline: this.component.props?.Attributes?.underline,
+          type: this.component.props?.attr?.type,
+          underline: this.component.props?.attr?.underline,
         },
         style: this.component.props?.style || {},
       },

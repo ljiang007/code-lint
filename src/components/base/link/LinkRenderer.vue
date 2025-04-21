@@ -1,7 +1,7 @@
 <template>
   <el-link
-    :type="component.props?.Attributes?.type"
-    :underline="component.props?.Attributes?.underline"
+    :type="component.props?.attr?.type"
+    :underline="component.props?.attr?.underline"
     :style="component.props?.style || {}"
   >
     {{ component.props?.text }}

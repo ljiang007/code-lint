@@ -22,6 +22,11 @@
       :disabled="!canRedo"
       @click="handleRedo"
     ></el-button>
+    <!-- 控制整个画布的背景颜色 -->
+    <el-color-picker
+      v-model="backgroundColor"
+      @change="updateBackgroundColor"
+    />
 
     <el-dialog title="提示" :visible.sync="dialogVisible" width="80%">
       <!-- <ComponentPreview :preview="components" /> -->
@@ -48,6 +53,7 @@ export default {
       currentIndex: -1,
       maxHistory: 30,
       importJson: "",
+      backgroundColor: "#ffffff",
     };
   },
   props: {
@@ -89,16 +95,22 @@ export default {
 
           // 同步数据到 localStorage
           localStorage.setItem("components", JSON.stringify(cleanComponents));
+          localStorage.setItem("backgroundColor", this.backgroundColor);
         }
       },
       deep: true,
     },
   },
   methods: {
+    updateBackgroundColor(color) {
+      localStorage.setItem("backgroundColor", color);
+      this.$emit("update:backgroundColor", color);
+    },
     open() {
       // this.dialogVisible = true;
       //打开新标签页跳转
       localStorage.setItem("components", JSON.stringify(this.components));
+      localStorage.setItem("backgroundColor", this.backgroundColor);
       window.open(`/preview`, "_blank");
     },
     importSubmit() {

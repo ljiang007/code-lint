@@ -1,7 +1,7 @@
 <template>
   <el-form label-position="top">
     <el-form-item label="图片链接">
-      <el-input v-model="localProps.Attributes.src" @input="update" />
+      <el-input v-model="localProps.attr.src" @input="update" />
     </el-form-item>
     <el-form-item label="图片宽度">
       <el-input v-model="localProps.style.width" @input="update" />

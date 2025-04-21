@@ -44,6 +44,9 @@ export default {
   margin: 2px;
   padding: 2px;
   position: relative;
+  /* display: inline-block;
+  width: auto;
+  max-width: 100%; */
 }
 .solid {
   outline: 1px solid #409eff;

@@ -2,7 +2,7 @@
   <el-form label-position="top">
     <el-form-item label="类型">
       <el-select
-        v-model="localProps.Attributes.type"
+        v-model="localProps.attr.type"
         placeholder="请选择"
         @change="update"
       >
@@ -16,7 +16,7 @@
       </el-select>
     </el-form-item>
     <el-form-item label="是否下划线">
-      <el-switch v-model="localProps.Attributes.underline" @change="update" />
+      <el-switch v-model="localProps.attr.underline" @change="update" />
     </el-form-item>
     <el-form-item label="字体颜色">
       <el-color-picker v-model="localProps.style.color" @change="update" />

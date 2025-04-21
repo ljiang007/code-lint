@@ -1,7 +1,7 @@
 <!-- 画布面板 -->
 <template>
   <div class="x">
-    <div class="canvas">
+    <div class="canvas" :style="{ backgroundColor: backgroundColor }">
       <!-- 使用正确的 Vue 2 vuedraggable 语法 -->
       <draggable
         v-model="localComponents"
@@ -37,7 +37,7 @@ export default {
       localComponents: [],
     };
   },
-  props: ["components", "selectedId"],
+  props: ["components", "selectedId", "backgroundColor"],
   watch: {
     components: {
       handler(val) {

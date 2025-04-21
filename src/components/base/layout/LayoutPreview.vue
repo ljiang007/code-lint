@@ -11,10 +11,10 @@ export default {
       {
         class: "preview-box",
         props: {
-          gutter: this.component.props?.Attributes?.gutter,
-          type: this.component.props?.Attributes?.type,
-          justify: this.component.props?.Attributes?.justify,
-          align: this.component.props?.Attributes?.align,
+          gutter: this.component.props?.attr?.gutter,
+          type: this.component.props?.attr?.type,
+          justify: this.component.props?.attr?.justify,
+          align: this.component.props?.attr?.align,
         },
       },
       this.component.children.map((child) =>
@@ -23,14 +23,11 @@ export default {
           {
             key: child.id,
             props: {
-              span: child.props?.Attributes?.span,
-              offset: child.props?.Attributes?.offset,
-              push: child.props?.Attributes?.push,
+              span: child.props?.attr?.span,
+              offset: child.props?.attr?.offset,
+              push: child.props?.attr?.push,
             },
-            style: this.getPullStyle(
-              child.props?.Attributes?.pull,
-              child.props?.style
-            ),
+            style: child.props?.style,
             // 自适应就用这个
             // props: { span: 24 / this.component.children.length },
             // style: { flex: `0 0 ${100 / this.component.children.length}%` },

@@ -1,7 +1,7 @@
 <!-- 属性面板 -->
 <template>
   <div>
-    {{ selectedComponent }}
+    <!-- {{ selectedComponent }} -->
     <div v-if="selectedComponent" class="panel">
       <!-- 因为我只需修改props（组件属性），所以这里传入各组件selectedComponent.props -->
       <component
@@ -15,6 +15,7 @@
         v-if="editorComponent"
         :propsData="selectedComponent.props"
         @update="update"
+        :type="selectedComponent.type"
       />
     </div>
     <div v-else class="panel">请选择一个组件进行编辑</div>
