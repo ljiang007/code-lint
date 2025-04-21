@@ -1,7 +1,7 @@
 <!-- 属性面板 -->
 <template>
   <div>
-    {{ selectedComponent }}
+    <!-- {{ selectedComponent }} -->
     <div v-if="selectedComponent" class="panel">
       <!-- 因为我只需修改props（组件属性），所以这里传入各组件selectedComponent.props -->
       <component

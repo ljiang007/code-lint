@@ -33,11 +33,12 @@ const componentMaps = {
     link: () => import("@/components/base/link/LinkPreview.vue"),
   },
   list: [
+    { type: "layout", label: "栅格布局" },
     { type: "text", label: "文本" },
     { type: "image", label: "图片" },
     { type: "button", label: "按钮" },
     { type: "link", label: "链接" },
-    { type: "layout", label: "栅格布局" },
+   
   ],
 };
 
