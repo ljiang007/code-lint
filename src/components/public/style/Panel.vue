@@ -1,6 +1,9 @@
 <template>
   <div class="box-model-demo">
-    <div class="margin-container">
+    <div
+      class="margin-container"
+      v-if="localProps?.Attributes?.style && Object.keys(localProps.Attributes.style).length !== 0"
+    >
       <div class="margin-label">外边距</div>
       <div class="margin-numbers">
         <span
@@ -59,6 +62,7 @@
         <div class="content"></div>
       </div>
     </div>
+    <div v-else>不提供布局组件的内外边距修改</div>
   </div>
 </template>
 

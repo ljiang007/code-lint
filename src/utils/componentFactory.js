@@ -32,14 +32,16 @@ const componentMaps = {
     layout: () => import("@/components/base/layout/LayoutPreview.vue"),
     link: () => import("@/components/base/link/LinkPreview.vue"),
   },
-  list: [
-    { type: "layout", label: "栅格布局" },
+  basics: [
     { type: "text", label: "文本" },
     { type: "image", label: "图片" },
     { type: "button", label: "按钮" },
     { type: "link", label: "链接" },
-   
   ],
+  layout:[
+    { type: "layout", label: "栅格布局" },
+    { type: "card", label: "卡片布局" },
+  ]
 };
 
 export { componentMaps };

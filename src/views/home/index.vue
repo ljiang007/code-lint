@@ -1,10 +1,14 @@
 <template>
   <el-row style="height: 100%">
-    <el-col :span="6" style="height: 100%">
+    <el-col :span="4" style="height: 100%">
       <Sidebar />
     </el-col>
-    <el-col :span="12" style="height: 100%">
-      <Operation :components.sync="components" @select="handleSelect" />
+    <el-col :span="16" style="height: calc(100% - 60px)">
+      <Operation
+        :components.sync="components"
+        @select="handleSelect"
+        @importJson="importJson"
+      />
       <Canvas
         :components.sync="components"
         @select="handleSelect"
@@ -12,7 +16,7 @@
         @delete-component="handleDeleteComponent"
       />
     </el-col>
-    <el-col :span="6" style="height: 100%">
+    <el-col :span="4" style="height: 100%">
       <Attribute
         :selectedComponent="selectedComponent"
         @update="handleUpdateComponent"
@@ -41,6 +45,11 @@ export default {
     },
   },
   methods: {
+    importJson(code) {
+      this.components = code;
+      this.handleSelect(code[code.length - 1]?.id || null);
+      this.$forceUpdate();
+    },
     // 删除组件
     /**
      * 删除组件的方法
@@ -86,7 +95,7 @@ export default {
       if (comp) {
         comp.props = updatedProps;
       }
-      console.log('333',comp);
+      console.log("333", comp);
     },
 
     /**

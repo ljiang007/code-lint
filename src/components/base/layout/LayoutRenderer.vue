@@ -7,13 +7,14 @@
       :align="component.props?.Attributes?.align"
       :style="component.props?.style"
     >
+    <!-- no：pull -->
       <el-col
         v-for="child in component.children"
         :key="child.id"
         :span="child.props?.Attributes?.span"
         :offset="child.props?.Attributes?.offset"
         :push="child.props?.Attributes?.push"
-        :style="getPullStyle(child.props?.Attributes?.pull, child.props?.style)"
+        :pull="child.props?.Attributes?.pull"
       >
         <div
           class="col-box"
@@ -68,6 +69,8 @@ export default {
   },
   methods: {
     getPullStyle(pull, style) {
+      console.log('pull',pull)
+      console.log(style)
       if (pull) {
         return {
           left: `-${pull * 4.166667}%`,

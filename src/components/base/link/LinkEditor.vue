@@ -27,6 +27,17 @@
     <el-form-item label="Link内容">
       <el-input v-model="localProps.text" @input="update" />
     </el-form-item>
+    <el-form-item label="对齐方式">
+      <el-select
+        placeholder="请选择"
+        v-model="localProps.style.textAlign"
+        @change="update"
+      >
+        <el-option value="left" label="左对齐"></el-option>
+        <el-option value="center" label="居中对齐"></el-option>
+        <el-option value="right" label="右对齐"></el-option>
+      </el-select>
+    </el-form-item>
   </el-form>
 </template>
 

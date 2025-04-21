@@ -77,7 +77,6 @@ export default {
           type,
           props: {},
           children: [],
-          style: {},
         };
 
         // 添加默认属性
